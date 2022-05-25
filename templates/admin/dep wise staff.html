@@ -1,0 +1,39 @@
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+<form action="/admin_dep_wise_staff_post" method="post">
+<table class="table table-boarderless">
+      <tr>
+        <td width="119">Department</td><td>
+          <select name="textfield3" id="textfield3" class="form-control" required >
+          <option></option>
+          {% for i in data %}
+          <option value="{{ i['did']}}">{{ i['dname'] }}</option>
+          {% endfor %}
+        </select>
+        </td>
+
+        <td>
+            <input type="submit" name="view" id="Go" value="view" class="btn btn-primary" />
+        </td>
+      </tr>
+</table>
+ <table class="table table-bordered">
+      <tr>
+        <th>SNo</th>
+        <th>Teacher</th>
+        <th>Reg.no</th>
+        <th>Email</th>
+      </tr>
+            {% for i in data1 %}
+        <tr>
+          <td width="50px">{{ loop.index }}&nbsp;</td>
+          <td>&nbsp;{{ i['fname']}} {{ i['lname']}}</td>
+          <td>&nbsp;{{ i['regno']}}</td>
+          <td>{{ i['email']}}</td>
+        </tr>
+      {% endfor %}
+
+    </table>
+</form>
+{% endblock %}

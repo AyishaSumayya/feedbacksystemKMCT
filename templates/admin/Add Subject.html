@@ -1,0 +1,59 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+
+  <form action="/add_subject_post" method="post">
+    <table class="table table-bordered">
+      <tr>
+        <th>Department</th>
+        <th>
+        <select name="dept" id="textfield3" class="form-control" required >
+      <option></option>
+      {% for i in data %}
+
+      <option value="{{ i['did']}}">{{ i['dname'] }}</option>
+      {% endfor %}
+      </select>      </th>
+      </tr>
+      <tr>
+        <th>Semester</th>
+         <th>   <select name="sem" id="Semester" class="form-control" required>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+               <option>5</option>
+               <option>6</option>
+               <option>7</option>
+               <option>8</option>
+            </select>
+        </th>
+      </tr>
+      <tr>
+        <th width="150px">Subject Code</th>
+          <th> <input type="text" name="scode" id="textfield1" class="form-control" required /> </th>
+      </tr>
+      <tr>
+        <th>Subject Name</th>
+         <th> <input type="text" name="sname" id="textfield2" class="form-control" required/>  </th>
+      </tr>
+      <tr>
+          <th></th>
+        <th>
+          <input type="submit" name="submit" id="submit" value="Add" class="btn btn-primary"/>
+        </th>
+      </tr>
+    </table>
+  </form>
+
+{% endblock %}
+
+<!--</body>-->
+<!--</html>-->

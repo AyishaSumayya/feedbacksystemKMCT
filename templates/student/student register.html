@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<!--    <form action="/Student_Register_post" method="post">-->
+        <table width="200" border="1">
+          <tr>
+            <td width="65">Regno</td>
+            <td width="119"><input type="text" name="sreg" id="textfield1" />      </td>
+          </tr>
+          <tr>
+            <td>Fname</td>
+            <td width="119"><input type="text" name="sfname" id="textfield2" />      </td>
+          </tr>
+          <tr>
+            <td>Lname</td>
+            <td width="119"><input type="text" name="slname" id="textfield3" />      </td>
+          </tr>
+          <tr>
+            <td>Dept</td>
+            <td width="119"><select name="sdep" id="textfield4" >
+              <option></option>
+              {% for i in data %}
+
+              <option value="{{ i['did']}}">{{ i['dname'] }}</option>
+              {% endfor %}
+            </select>      </td>
+          </tr>
+          <tr>
+            <td>Sem</td>
+           <td width="119"><input type="text" name="ssem" id="textfield5" />      </td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td width="119"><input type="text" name="semail" id="textfield6" />      </td>
+          </tr>
+          <tr>
+            <td>Password</td>
+           <td width="119"><input type="text" name="spsw" id="textfield7" />      </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="submit" name="submit" id="submit" value="Submit" />
+            </td>
+            <td>
+              <input type="submit" name="clear" id="clear" value="clear" />
+            </td>
+          </tr>
+        </table>
+    </form>
+</body>
+</html>

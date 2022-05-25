@@ -1,0 +1,16 @@
+{% extends 'student/student index.html' %}
+{% block body %}
+
+<table class="table table-boarderless">
+            <tr>
+                <td>{{ data['fname'] }} {{ data['lname'] }}</td>
+            </tr>
+            <tr>
+                <td>{{ data['regno'] }}</td>
+            </tr>
+            <tr>
+                <td>{{ data['dname'] }} - {{ data['sem'] }}</td>
+            </tr>
+            <tr>
+        </table>
+{% endblock %}

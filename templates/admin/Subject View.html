@@ -1,0 +1,55 @@
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+<form action="/sub_view_post" method="post">
+<table class="table table-bordered">
+  <tr>
+    <td width="184">Department<select name="textfield3" id="textfield"3 class="form-control" required/>
+      <option></option>
+      {% for i in data %}
+      <option value="{{ i['did']}}">{{ i['dname'] }}</option>
+      {% endfor %}
+    </select>      </td>
+    <td width="184">Semester 
+      <select name="Semester" id="Semester" class="form-control" required/>
+        <option> </option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+    </select>
+    </td>
+    <td>
+        <input type="submit" name="Go" id="Go" value="Go" class="btn btn-primary" />
+    </td>
+  </tr>
+</table>
+<br>
+<br>
+<table class="table table-hover">
+  <tr>
+    <th>Sno</th>
+    <th>SubCode</th>
+    <th>SubName</th>
+    <th>&nbsp;</th>
+  </tr>
+
+  {% for i in data1 %}
+    <tr>
+      <td width="50px">{{ loop.index }}&nbsp;</td>
+      <td>&nbsp;{{i['scode']}}</td>
+      <td>&nbsp;{{i['sname']}}</td>
+      <td width="50px">
+
+        <a href="/admin_edit_sub/{{ i['subid'] }}" class="btn btn-outline-info">Edit</a></td>
+        <td width="50px"><a href="/delete_sub/{{ i['subid'] }}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+</form>
+{% endblock %}

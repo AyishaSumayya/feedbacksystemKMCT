@@ -1,0 +1,18 @@
+{% extends 'admin/admin index.html' %}
+{% block body %}
+<form action="/admin_add_dept_post" method="post">
+<table class="table table-boarderless">
+  <tr>
+    <td><h4>Department</h4></td>
+    <td>
+      <input type="text" name="addDept" id="textfield" class="form-control" required/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+     <td> <input type="submit" name="add" id="add" value="add" class="btn btn-primary" /></td>
+    </td>
+  </tr>
+</table>
+</form>
+{% endblock %}

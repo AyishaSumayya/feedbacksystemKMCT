@@ -1,0 +1,30 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Student Home</title>-->
+<!--</head>-->
+<!--<body>-->
+{% extends 'student/student index.html' %}
+{% block body %}
+
+
+
+        <table class="table table-hover">
+            <tr>
+                <td>Sno</td>
+                <td>Subject</td>
+                <td>Teacher</td>
+                <td>Feedback</td>
+            </tr>
+            {%  for  i  in  data1  %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ i['sname']}}</td>
+                    <td>{{ i['fname']}} {{ i['lname']}}</td>
+                    <td><a href="/upload_feedback/{{ i['lid'] }}/{{ i['subid'] }}" class="btn btn-outline-info">Upload Feedback</a></td>
+                </tr>
+            {%  endfor  %}
+        </table>
+
+{% endblock %}

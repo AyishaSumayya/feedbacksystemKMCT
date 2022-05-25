@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/edit_stud_pofile" method="post">
+<table>
+    <tr>
+        <td> Name
+        <td>
+        {{ data1['fname'] }} {{ data1['lname'] }}</td>
+        </td>
+    </tr>
+    <tr>
+        <td> Reg.No
+        <td>
+        { data1['regno'] }}</td>
+        </td>
+    </tr>
+    <tr>
+        <td >Dept
+      <select name="textfield3" id="textfield3" class="form-control">
+      <option></option>
+      {% for i in data %}
+      <option value="{{ i['did']}}">{{ i['dname'] }}</option>
+      {% endfor %}
+    </select>
+    </td>
+    </tr>
+    <tr>
+        <td width="184">Semester
+      <select name="Semester" id="Semester" class="form-control" required/>
+        <option> </option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+    </select>
+    </td>
+    </tr>
+    <tr>
+        <td> Email
+            <input type="Email" name="Email">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="submit" name="Update" id="Go" value="Update" class="btn btn-primary" />
+        </td>
+    </tr>
+
+</table>
+</form>
+</body>
+</html>

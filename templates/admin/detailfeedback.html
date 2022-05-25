@@ -1,0 +1,79 @@
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+
+<h3>Complete Feedback Summary (KeyPhrases)</h3>
+<br>
+
+<p>{{ finalreview }}</p>
+
+<br>
+
+<h3>Students Feedback</h3>
+<br>
+
+    <form action="" method="post">
+    <table class="table table-hover">
+        <tr>
+            <th>Sno</th>
+            <th>Student</th>
+            <th>Keyword</th>
+            <th></th>
+        </tr>
+        {% for i in data1 %}
+        <tr>
+            <td width="50px">{{ loop.index }}</td>
+            <td>{{ i['fname'] }} {{ i['lname'] }}</td>
+            <td>{{ i['feedback'] }}</td>
+            <td width="50px"><a href="/detailedfdbk/{{ i['fid'] }}" class="btn btn-success">More</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    </form>
+
+
+ <script src='/static/Chart.min.js'></script>   </head><body>
+
+<h6>Bar Graph</h6><form method="post" action="">
+    <br>
+    <!-- bar chart canvas element --><canvas id="chart" width="600" height="500"></canvas>
+<script>
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels %}
+                  "{{item}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+         data : [{% for item in values %}
+                      {{item}},
+                    {% endfor %}]
+      }
+      ]
+   }
+
+   // get bar chart canvas
+   var mychart = document.getElementById("chart").getContext("2d");
+
+   steps = 10
+   max = 100
+   // draw bar chart
+   new Chart(mychart).Bar(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true
+   });
+
+</script>
+
+{% endblock %}
+<!--</body>-->
+<!--</html>-->

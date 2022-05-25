@@ -1,0 +1,42 @@
+
+
+{% extends "teacher/teacher index.html" %}
+{% block body %}
+
+        <!--<table class="table table-boarderless" align="center">-->
+
+            <!--<tr>-->
+                <!--<th>{{ data['fname'] }} {{ data['lname'] }}</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<th>{{ data['regno'] }}</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<th>{{ data['dname'] }}</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+        <!--</table>-->
+
+    <!--<br><br><br>-->
+
+
+            <table class="table table-hover" align="center">
+            <tr>
+                <td>Sno</td>
+                <td>Sem</td>
+                <td>Subject</td>
+            </tr>
+                {%  for  i  in  data1  %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ i['sem']}}</td>
+                    <td value="{{ i['subid']}}">{{ i['sname']}}</td>
+                    <td><a href="/view_feedback/{{ i['subid'] }}" class="btn btn-primary" />Feedback</a></td>
+                </tr>
+            {%  endfor  %}
+        </table>
+
+{% endblock %}
+
+<!--</body>-->
+<!--</html>-->

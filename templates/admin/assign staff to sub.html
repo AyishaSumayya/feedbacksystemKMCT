@@ -1,0 +1,98 @@
+{% extends 'admin/admin index.html' %}
+{% block body %}
+<form action="/admin_assign_staff_post" method="post">
+<table class="table table-boarderless">
+  <tr>
+    <td width="119">Department
+    <select name="dept" id="textfield" class="form-control" required >
+        <option></option>
+      {% for i in data %}
+      <option value="{{ i['did']}}">{{ i['dname'] }}</option>
+      {% endfor %}
+  </select>      </td>
+  </tr>
+  <tr>
+    <td width="119" colspan="2">Teacher
+
+        <select name="tchr" id="select2" class="form-control" required>
+          {% for i in teacher %}
+          <option value="{{ i['tid']}}">{{ i['fname']}}--{{ i['lname']}}</option>
+          {% endfor %}
+        </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="119" colspan="2">Subject
+        <select name="sub" id="select3" class="form-control" required>
+            {% for i in sub %}
+          <option value="{{ i['sid']}}">{{ i['scode']}} {{ i['sname']}}</option>
+          {% endfor %}
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="submit" name="Allocate" id="Allocate" value="Allocate" class="btn btn-primary" />
+    </td>
+  </tr>
+</table>
+</form>
+<script src="/static/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+//    alert("success");
+    $('#textfield').change(function() {
+    var idk=$(this).val()
+//    alert(idk)
+        $.ajax({
+            url: "/dep_wise_staff_post",
+            type: "POST",
+            data: {"textfield3":idk},
+            success: function (dat) {
+                $("#select2").text("");
+                 $("#select3").text("");
+//                alert(dat["status"])
+//                alert('hhhh')
+                subject=dat["sub"]
+
+//                alert("subjectlen==="+subject.length)
+                for(i=0;i<=subject.length;i++)
+                {
+                tlid=subject[i]["subid"]
+                tname=subject[i]["sname"]
+                    $("#select3").append('<option value='+tlid+'>'+tname+'</option>')
+//                    alert(i)
+                    if(i==(subject.length-1))
+                    {
+
+                    teacherdata=dat["teacher"]
+                for(i=0;i<=teacherdata.length;i++)
+                {
+                tlid=teacherdata[i]["lid"]
+                tname=teacherdata[i]["fname"]
+                    $("#select2").append('<option value='+tlid+'>'+tname+'</option>')
+
+                }
+
+
+
+                    }
+
+                }
+//        alert('--------------------------------------------------')
+
+
+
+
+            },
+            error: function (ts) {
+//{#                alert(ts);#}
+            }
+        });
+    });
+
+
+});
+</script>
+{% endblock %}

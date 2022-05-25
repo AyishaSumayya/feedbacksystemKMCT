@@ -1,0 +1,49 @@
+
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+<!--<body>-->
+
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+<form action="/dept_view_post" name="form" method="post">
+
+  <table class="table table-bordered" style="width: 400px">
+    <tr>
+            <td><input type="text" name="search" id="textfield1" class="form-control" required/>     </td>
+            <td>
+          <input type="submit" name="submit" id="submit" value="search" class="btn btn-primary" />
+            </td>
+    </tr>
+
+  </table>
+<table class="table table-bordered">
+  <tr>
+    <th>Sno</th>
+    <th>Dept</th>
+    <th colspan="2">&nbsp;</th>
+  </tr>
+
+  <tr>
+    {% for i in data %}
+  <tr>
+    <td width="50px">{{ loop.index }}&nbsp;</td>
+    <td>&nbsp;{{i['dname']}}</td>
+    <td width="50px"> <a href="/admin_edit_dept/{{ i['did'] }}" class="btn btn-info">Edit</a></td>
+     <td width="50px"> <a href="/delete_dept/{{ i['did'] }}" class="btn btn-danger">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+
+</table>
+
+</form>
+{% endblock %}
+
+<!--</body>-->
+<!--</html>-->

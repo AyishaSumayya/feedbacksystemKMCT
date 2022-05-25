@@ -1,0 +1,59 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+<!--<body>-->
+
+
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+<form action="adm_view_feedback_post" method="post">
+<table class="table table-boarderless">
+  <tr>
+    <td >Department</td><td>
+      <select name="textfield3" id="textfield3" class="form-control" required/>
+      <option></option>
+      {% for i in data %}
+      <option value="{{ i['did']}}">{{ i['dname'] }}</option>
+      {% endfor %}
+    </select>
+    </td>
+
+    <td>
+        <input type="submit" name="al_staff" id="Go" value="Go" class="btn btn-primary" />
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table class="table table-bordered">
+  <tr>
+    <th>SNo</th>
+    <th>Reg.no</th>
+    <th>Teacher</th>
+    <th>Subject</th>
+
+  </tr>
+  {% for i in data1 %}
+    <tr>
+      <td width="50px">{{ loop.index }}&nbsp;</td>
+      <td>&nbsp;{{ i['regno'] }}</td>
+      <td>&nbsp;{{ i['fname'] }} {{i['lname']}}</td>
+      <td>&nbsp;{{ i['sname'] }}</td>
+      <td width="50px">
+
+        <a href="/admin_view_dfeedback/{{ i['subid'] }}/{{ i['lid'] }}" class="btn btn-info">View feedback</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+<p>&nbsp;</p>
+</form>
+{% endblock %}
+
+<!--</body>-->
+<!--</html>-->

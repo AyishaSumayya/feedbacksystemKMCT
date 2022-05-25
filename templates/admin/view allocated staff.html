@@ -1,0 +1,50 @@
+
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+<form action="/view_allocated_staff_post" method="post">
+<table class="table table-boarderless">
+  <tr>
+    <td >Dept
+      <select name="textfield3" id="textfield3" class="form-control">
+      <option></option>
+      {% for i in data %}
+      <option value="{{ i['did']}}">{{ i['dname'] }}</option>
+      {% endfor %}
+    </select>
+    </td>
+    
+    <td width="51">
+        <input type="submit" name="al_staff" id="Go" value="Go" class="btn btn-primary"/>
+    </form></td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+    <th>SNo</th>
+    <th>Reg.no</th>
+    <th>Teacher</th>
+    <th>Subject</th>
+    
+  </tr>
+  {% for i in data1 %}
+    <tr>
+      <td width="50px">{{ loop.index }}&nbsp;</td>
+      <td>&nbsp;{{i['regno']}}</td>
+      <td>&nbsp;{{i['fname']}} {{i['lname']}}</td>
+      <td>&nbsp;{{i['sname']}}</td>
+      <td width="50px">
+<!--        <a href="/edit_assign/{{ i['subid'] }}" class="btn btn-outline-info">Edit</a>-->
+<!--        <a href="/delete_staff/{{ i['aid'] }}" class="btn btn-outline-info">Delete</a>-->
+<!--          <input type="hidden" name="teacher_id" value="{{ data1['lid'] }}">Delete</a>-->
+          <a href="/delete_staff/{{ i['aid'] }}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+</form>
+
+{% endblock %}
+<!--</body>-->
+<!--</html>-->
